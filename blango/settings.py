@@ -139,6 +139,7 @@ class Dev(Configuration):
   # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
   STATIC_URL = '/static/'
+  REGISTRATION_OPEN = False
 
   # Default primary key field type
   # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -146,7 +147,8 @@ class Dev(Configuration):
   DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
   CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
   AUTH_USER_MODEL="blango_auth.User"
-
+  EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+  ACCOUNT_ACTIVATION_DAYS = 7
 class Prod(Dev):
   DEBUG=False
   SECRET_KEY = values.SecretValue()
